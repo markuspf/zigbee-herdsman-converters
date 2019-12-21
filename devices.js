@@ -2232,7 +2232,6 @@ const devices = [
             const endpoint = device.getEndpoint(1);
             await bind(endpoint, coordinatorEndpoint, [
                 'genBasic', 'genPowerCfg', 'genIdentify', 'genTime', 'genPollCtrl', 'hvacThermostat',
-                'hvarUserInterfaceCfg',
             ]);
             await configureReporting.thermostatTemperature(endpoint);
             await configureReporting.thermostatOccupiedHeatingSetpoint(endpoint);
