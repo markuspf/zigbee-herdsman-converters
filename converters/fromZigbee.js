@@ -1543,7 +1543,11 @@ const converters = {
             if (msg.data.hasOwnProperty('instantaneousDemand')) {
                 result.power = msg.data['instantaneousDemand'];
             }
-
+            if (msg.data.hasOwnProperty('currentSummDelivered')) {                  
+                const data = msg.data['currentSummDelivered'];        
+                const value = (parseInt(data[0]) << 32) + parseInt(data[1]);
+                result.energy = value;                                      
+            }    
             return result;
         },
     },

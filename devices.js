@@ -4508,9 +4508,11 @@ const devices = [
         meta: {configureKey: 2},
         configure: async (device, coordinatorEndpoint) => {
             const endpoint = device.getEndpoint(9);
-            await bind(endpoint, coordinatorEndpoint, ['genOnOff']);
+            await bind(endpoint, coordinatorEndpoint, ['genBasic', 'genPowerCfg', 'genIdentify',
+                                                       'genOnOff', 'seMetering']);
             await configureReporting.onOff(endpoint);
             await configureReporting.instantaneousDemand(endpoint);
+            await configureReporting.currentSummDelivered(endpoint);
             await endpoint.read('seMetering', ['multiplier', 'divisor']);
         },
     },
